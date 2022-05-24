@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sudoku Solver</title>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+    </style>
+    <style>
+    body {
+      background-color:rgba(221, 226, 227, 0);
+      font-family: 'Lato', sans-serif;
+    }
+    table, th, td {
+      border-style: solid;
+      border-width: 1.5px;
+      border-color: rgb(187, 195, 187, 1);
+      border-collapse: collapse;
+      background-color: white;
+    }
+    table {
+      border-style: solid;
+      border-width: 2px;
+      border-color: rgb(187, 195, 187, 1);
+      border-collapse: collapse;
+    }
+    td {
+      width:40px;
+      height:40px;
+      text-align: center;
+    }
+    input {
+      border-color: white;
+      border-width: 0px;
+      width:35px;
+  	  height:35px;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+      font-size: 120%;
+      size: 1
+    }
+    .button {
+      width:129px;
+      height:45px;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    .button1 {
+      background-color: white;
+      color: black;
+      border: 2px solid rgb(10, 86, 90);
+    }
+    .button1:hover {
+      background-color: rgb(10, 86, 90);
+      color: white;
+    }
+  }
+
+    </style>
+</head>
+
+<body>
+<form method="POST" th:object="${input}">
+    <p style="font-size:300%; padding-top: 25px; padding-bottom: 5px;margin: 20px; margin-left: 70px">Sudoku Solver</p>
+    <table style="margin: 20px; margin-left: 70px">
+        <tr>
+            <td><input type="text" id="v11" maxlength="1" th:field="*{v11}"/></td>
+            <td><input type="text" id="v21" maxlength="1" th:field="*{v21}"/></td>
+            <td><input type="text" id="v31" maxlength="1" th:field="*{v31}"/></td>
+            <td><input type="text" id="v41" maxlength="1" th:field="*{v41}"/></td>
+            <td><input type="text" id="v51" maxlength="1" th:field="*{v51}"/></td>
+            <td><input type="text" id="v61" maxlength="1" th:field="*{v61}"/></td>
+            <td><input type="text" id="v71" maxlength="1" th:field="*{v71}"/></td>
+            <td><input type="text" id="v81" maxlength="1" th:field="*{v81}"/></td>
+            <td><input type="text" id="v91" maxlength="1" th:field="*{v91}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v12" maxlength="1" th:field="*{v12}"/></td>
+            <td><input type="text" id="v22" maxlength="1" th:field="*{v22}"/></td>
+            <td><input type="text" id="v32" maxlength="1" th:field="*{v32}"/></td>
+            <td><input type="text" id="v42" maxlength="1" th:field="*{v42}"/></td>
+            <td><input type="text" id="v52" maxlength="1" th:field="*{v52}"/></td>
+            <td><input type="text" id="v62" maxlength="1" th:field="*{v62}"/></td>
+            <td><input type="text" id="v72" maxlength="1" th:field="*{v72}"/></td>
+            <td><input type="text" id="v82" maxlength="1" th:field="*{v82}"/></td>
+            <td><input type="text" id="v92" maxlength="1" th:field="*{v92}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v13" maxlength="1" th:field="*{v13}"/></td>
+            <td><input type="text" id="v23" maxlength="1" th:field="*{v23}"/></td>
+            <td><input type="text" id="v33" maxlength="1" th:field="*{v33}"/></td>
+            <td><input type="text" id="v43" maxlength="1" th:field="*{v43}"/></td>
+            <td><input type="text" id="v53" maxlength="1" th:field="*{v53}"/></td>
+            <td><input type="text" id="v63" maxlength="1" th:field="*{v63}"/></td>
+            <td><input type="text" id="v73" maxlength="1" th:field="*{v73}"/></td>
+            <td><input type="text" id="v83" maxlength="1" th:field="*{v83}"/></td>
+            <td><input type="text" id="v93" maxlength="1" th:field="*{v93}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v14" maxlength="1" th:field="*{v14}"/></td>
+            <td><input type="text" id="v24" maxlength="1" th:field="*{v24}"/></td>
+            <td><input type="text" id="v34" maxlength="1" th:field="*{v34}"/></td>
+            <td><input type="text" id="v44" maxlength="1" th:field="*{v44}"/></td>
+            <td><input type="text" id="v54" maxlength="1" th:field="*{v54}"/></td>
+            <td><input type="text" id="v64" maxlength="1" th:field="*{v64}"/></td>
+            <td><input type="text" id="v74" maxlength="1" th:field="*{v74}"/></td>
+            <td><input type="text" id="v84" maxlength="1" th:field="*{v84}"/></td>
+            <td><input type="text" id="v94" maxlength="1" th:field="*{v94}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v15" maxlength="1" th:field="*{v15}"/></td>
+            <td><input type="text" id="v25" maxlength="1" th:field="*{v25}"/></td>
+            <td><input type="text" id="v35" maxlength="1" th:field="*{v35}"/></td>
+            <td><input type="text" id="v45" maxlength="1" th:field="*{v45}"/></td>
+            <td><input type="text" id="v55" maxlength="1" th:field="*{v55}"/></td>
+            <td><input type="text" id="v65" maxlength="1" th:field="*{v65}"/></td>
+            <td><input type="text" id="v75" maxlength="1" th:field="*{v75}"/></td>
+            <td><input type="text" id="v85" maxlength="1" th:field="*{v85}"/></td>
+            <td><input type="text" id="v95" maxlength="1" th:field="*{v95}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v16" maxlength="1" th:field="*{v16}"/></td>
+            <td><input type="text" id="v26" maxlength="1" th:field="*{v26}"/></td>
+            <td><input type="text" id="v36" maxlength="1" th:field="*{v36}"/></td>
+            <td><input type="text" id="v46" maxlength="1" th:field="*{v46}"/></td>
+            <td><input type="text" id="v56" maxlength="1" th:field="*{v56}"/></td>
+            <td><input type="text" id="v66" maxlength="1" th:field="*{v66}"/></td>
+            <td><input type="text" id="v76" maxlength="1" th:field="*{v76}"/></td>
+            <td><input type="text" id="v86" maxlength="1" th:field="*{v86}"/></td>
+            <td><input type="text" id="v96" maxlength="1" th:field="*{v96}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v17" maxlength="1" th:field="*{v17}"/></td>
+            <td><input type="text" id="v27" maxlength="1" th:field="*{v27}"/></td>
+            <td><input type="text" id="v37" maxlength="1" th:field="*{v37}"/></td>
+            <td><input type="text" id="v47" maxlength="1" th:field="*{v47}"/></td>
+            <td><input type="text" id="v57" maxlength="1" th:field="*{v57}"/></td>
+            <td><input type="text" id="v67" maxlength="1" th:field="*{v67}"/></td>
+            <td><input type="text" id="v77" maxlength="1" th:field="*{v77}"/></td>
+            <td><input type="text" id="v87" maxlength="1" th:field="*{v87}"/></td>
+            <td><input type="text" id="v97" maxlength="1" th:field="*{v97}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v18" maxlength="1" th:field="*{v18}"/></td>
+            <td><input type="text" id="v28" maxlength="1" th:field="*{v28}"/></td>
+            <td><input type="text" id="v38" maxlength="1" th:field="*{v38}"/></td>
+            <td><input type="text" id="v48" maxlength="1" th:field="*{v48}"/></td>
+            <td><input type="text" id="v58" maxlength="1" th:field="*{v58}"/></td>
+            <td><input type="text" id="v68" maxlength="1" th:field="*{v68}"/></td>
+            <td><input type="text" id="v78" maxlength="1" th:field="*{v78}"/></td>
+            <td><input type="text" id="v88" maxlength="1" th:field="*{v88}"/></td>
+            <td><input type="text" id="v98" maxlength="1" th:field="*{v98}"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="v19" maxlength="1" th:field="*{v19}"/></td>
+            <td><input type="text" id="v29" maxlength="1" th:field="*{v29}"/></td>
+            <td><input type="text" id="v39" maxlength="1" th:field="*{v39}"/></td>
+            <td><input type="text" id="v49" maxlength="1" th:field="*{v49}"/></td>
+            <td><input type="text" id="v59" maxlength="1" th:field="*{v59}"/></td>
+            <td><input type="text" id="v69" maxlength="1" th:field="*{v69}"/></td>
+            <td><input type="text" id="v79" maxlength="1" th:field="*{v79}"/></td>
+            <td><input type="text" id="v89" maxlength="1" th:field="*{v89}"/></td>
+            <td><input type="text" id="v99" maxlength="1" th:field="*{v99}"/></td>
+        </tr>
+    </table>
+    <button style="margin-left: 70px" class="button button1">Compute</button>
+</form>
+<br>
+</body>
+</html>
