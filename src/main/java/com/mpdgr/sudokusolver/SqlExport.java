@@ -1,10 +1,12 @@
-package com.pdgr.SudokuSolver;
+package com.mpdgr.sudokusolver;
+
+import com.mpdgr.sudokusolver.controller.SudokuInput;
 
 import java.sql.*;
 
 public class SqlExport {
 
-    public static void exportToMySql(SudokuInputModel input) {
+    public static void exportToMySql(SudokuInput input) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sudoku_db", "springclient", "SpringPass01&#")) {
             String sqlStatement =
                     "insert into SUDOKU_ARCHIVE (v11,v21,v31,v41,v51,v61,v71,v81,v91,v12,v22,v32,v42,v52,v62,v72,v82,v92,v13,v23,v33,v43,v53,v63,v73,v83,v93,v14,v24,v34,v44,v54,v64,v74,v84,v94,v15,v25,v35,v45,v55,v65,v75,v85,v95,v16,v26,v36,v46,v56,v66,v76,v86,v96,v17,v27,v37,v47,v57,v67,v77,v87,v97,v18,v28,v38,v48,v58,v68,v78,v88,v98,v19,v29,v39,v49,v59,v69,v79,v89,v99) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
