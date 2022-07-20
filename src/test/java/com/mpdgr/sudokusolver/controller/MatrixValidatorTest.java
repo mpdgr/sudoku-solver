@@ -40,7 +40,6 @@ class MatrixValidatorTest {
             if (!validator.inputNotContradictory(matrix)){
                 allValid = false;
             }
-            System.out.println("checked");
         }
         assertTrue(allValid);
     }

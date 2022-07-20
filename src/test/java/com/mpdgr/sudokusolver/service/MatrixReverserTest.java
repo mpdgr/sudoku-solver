@@ -1,7 +1,6 @@
 package com.mpdgr.sudokusolver.service;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +19,6 @@ class MatrixReverserTest {
     };
 
     Integer[][] otherDiagReversed = new Integer[][]{
-
             {9, 6, 3},
             {8, 5, 2},
             {7, 4, 1}

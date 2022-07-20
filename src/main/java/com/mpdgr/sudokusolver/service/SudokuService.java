@@ -13,7 +13,7 @@ public class SudokuService {
     public Solution process(Integer[][] newSudoku) throws ServiceException {
 
         long timeStart = System.currentTimeMillis();
-        long deadline = timeStart + 600_000;
+        long deadline = timeStart + 100_000;
         InTimeCheck timeCheck = new InTimeCheck();
 
         CountDownLatch latch = new CountDownLatch(1);
