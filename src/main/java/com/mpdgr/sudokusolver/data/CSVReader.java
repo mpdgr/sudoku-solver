@@ -15,7 +15,7 @@ public class CSVReader {
 
     @PostConstruct
     public void writeCsvFromBean() throws FileNotFoundException {
-        String fileBase = "src/main/resources/static/database/sudoku_base3.csv";
+        String fileBase = "src\\main\\resources\\static\\database\\sudoku_base3.csv";
         List<SudokuEntity> sudokus = beanBuilder.beanBuilder(fileBase, SudokuEntity.class);
         sudokus.forEach(repository::save);
         System.out.println(repository.getById(1L));

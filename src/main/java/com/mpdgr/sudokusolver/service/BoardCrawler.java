@@ -38,7 +38,7 @@ public class BoardCrawler {
             }
             iter++;
             int score = boardChecker.checkMatrix(backToMatrixGenerator(board));
-            if (loc == firstFreeLoc && board[loc] == 9 && (dir == -1 && score != 0))
+            if (loc == firstFreeLoc && board[loc] == 9 && (dir == -1 || score == 1))
             {
                 return new Solution(false, iter);
             }
