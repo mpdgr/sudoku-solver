@@ -1,6 +1,6 @@
 package com.mpdgr.sudokusolver.controller;
 
-import com.mpdgr.sudokusolver.service.SudokuStrings;
+import com.mpdgr.sudokusolver.service.SudokuContent;
 
-public class SudokuInput extends SudokuStrings {
+public class SudokuInput extends SudokuContent {
 }

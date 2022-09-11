@@ -10,33 +10,33 @@ import java.util.concurrent.CountDownLatch;
 public class Worker implements Callable<Solution> {
     private Integer[][] task;
     private CountDownLatch latch;
-    private ReverseMode reverseMode;
-    private BoardCrawler crawler;
+    private TransposeMode transposeMode;
+    private SolverAlgorithm algorithm;
     private int threadNr;
 
-    public Worker(Integer[][] task, CountDownLatch latch, ReverseMode reverseMode) {
+    public Worker(Integer[][] task, CountDownLatch latch, TransposeMode transposeMode) {
         this.task = task;
         this.latch = latch;
-        this.reverseMode = reverseMode;
-        this.crawler = new BoardCrawler();
+        this.transposeMode = transposeMode;
+        this.algorithm = new SolverAlgorithm();
     }
 
     @Override
     public Solution call() {
         MatrixReverser reverser = new MatrixReverser();
-        Integer[][] reversed = reverser.reverse(task, reverseMode);
+        Integer[][] reversed = reverser.reverse(task, transposeMode);
         SudokuModel sudoku = new SudokuModel(reversed);
-        int[] boardAsArray = crawler.matrixArrayGenerator(sudoku.getMatrix());
-        int[] fixedPointsAsArray = crawler.fixedCellsArrayGenerator(sudoku.getFixedPointsMatrix());
+        int[] boardAsArray = algorithm.matrixArrayGenerator(sudoku.getMatrix());
+        int[] fixedPointsAsArray = algorithm.fixedCellsArrayGenerator(sudoku.getFixedPointsMatrix());
         Solution solution = new Solution();
         try {
-            solution = crawler.crawler(boardAsArray, fixedPointsAsArray);
+            solution = algorithm.crawler(boardAsArray, fixedPointsAsArray);
         } catch (InterruptedException ignored) {}
 
         latch.countDown();
-        solution.setSolution(reverser.reverse(solution.getSolution(), reverseMode));
+        solution.setSolution(reverser.reverse(solution.getSolution(), transposeMode));
         solution.setWinnerThreadNr(threadNr);
-        solution.setWinnerMode(reverseMode);
+        solution.setWinnerMode(transposeMode);
         return solution;
     }
 }

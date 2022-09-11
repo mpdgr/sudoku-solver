@@ -1,6 +1,6 @@
 package com.mpdgr.sudokusolver.service;
 
-public enum ReverseMode {
+public enum TransposeMode {
     NONE,
     X,
     Y,

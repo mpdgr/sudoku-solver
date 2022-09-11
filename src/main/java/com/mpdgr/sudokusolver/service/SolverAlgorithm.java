@@ -2,12 +2,12 @@ package com.mpdgr.sudokusolver.service;
 
 import java.util.Arrays;
 
-public class BoardCrawler {
+public class SolverAlgorithm {
 
 /*
-    Class contains crawler method to scan through the board and look for correct values
-    Sudoku matrix is transformed to an array, processed and transformed back to matrix
-    Kill method is used to interrupt counting in case other thread completes the task faster
+    Contains method to scan through the board and look for correct values.
+    Sudoku matrix is transformed to an array, processed and transformed back to matrix.
+    Kill method is used to interrupt counting in case of other thread completing the task faster.
 */
 
     private boolean isActive = true;
@@ -18,10 +18,20 @@ public class BoardCrawler {
 
     public Solution crawler (int[] boardStart, int[] fixStart) throws InterruptedException {
         BoardChecker boardChecker = new BoardChecker();
+
+        //starting state of the board
         int[] board = Arrays.copyOf(boardStart, boardStart.length);
+
+        //indicates cells containig values input at the start (cannot be changed)
         int[] fix = Arrays.copyOf(fixStart, fixStart.length);
+
+        //position pointer
         int loc = 0;
+
+        //direction pointer (1 forward; -1 backwards)
         int dir = 1;
+
+        //iteration counter (iteration = one step forward or backwards)
         int iter = 0;
 
         int firstFreeLoc = -1;

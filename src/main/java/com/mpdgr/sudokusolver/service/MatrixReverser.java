@@ -1,11 +1,10 @@
 package com.mpdgr.sudokusolver.service;
 
-
 public class MatrixReverser {
 
-    public Integer[][] reverse(Integer[][] matrix, ReverseMode reverseMode) {
+    public Integer[][] reverse(Integer[][] matrix, TransposeMode transposeMode) {
         Integer[][] reversed;
-        switch (reverseMode) {
+        switch (transposeMode) {
             case NONE:
                 reversed = matrix;
                 break;

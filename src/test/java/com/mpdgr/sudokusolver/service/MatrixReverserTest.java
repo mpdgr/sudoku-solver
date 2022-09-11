@@ -2,7 +2,6 @@ package com.mpdgr.sudokusolver.service;
 
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixReverserTest {
@@ -126,7 +125,7 @@ class MatrixReverserTest {
     @Test
     void reverseTest() {
         MatrixReverser reverser = new MatrixReverser();
-        ReverseMode mode = ReverseMode.X;
+        TransposeMode mode = TransposeMode.X;
         Integer[][] reversed = reverser.reverse(testMatrixLong, mode);
         Integer[][] back = reverser.reverse(reversed, mode);
         assertFalse(Arrays.deepEquals(reversed, back));

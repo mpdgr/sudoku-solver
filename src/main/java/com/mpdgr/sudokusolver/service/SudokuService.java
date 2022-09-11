@@ -1,11 +1,18 @@
 package com.mpdgr.sudokusolver.service;
 
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Stream;
+
+/*
+    Process method transposes given input sudoku matrix into 6 new matrices and starts 6 worker thread,
+    each solving one matrix. The fastest thread returns the solution (transposed back to match initial input).
+    After the solution is found, remaining threads are stopped.
+    Additional thread is started for timer - to stop the method in case no solution is found
+    (which indicates unexpected error).  .
+ */
 
 @Component
 public class SudokuService {
@@ -23,7 +30,7 @@ public class SudokuService {
         timerDaemon.setDaemon(true);
         timerDaemon.start();
 
-        Stream<ReverseMode> modeStream = Stream.of(ReverseMode.values());
+        Stream<TransposeMode> modeStream = Stream.of(TransposeMode.values());
 
         List<Worker> workers = new ArrayList<>();
         List<Callable<Solution>> solvers = new ArrayList<>();
@@ -70,7 +77,7 @@ public class SudokuService {
             }
         }
         for (var worker : workers) {
-            worker.getCrawler().kill();
+            worker.getAlgorithm().kill();
         }
 
         if (!futureDone) {

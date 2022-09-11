@@ -24,7 +24,7 @@ public class MatrixValidator {
         return true;
     }
 
-    //check if each empty cell has at least one possible input
+    //check if each empty cell has at least one possible/valid input
     public boolean inputNotContradictory(Integer[][] matrix) {
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {

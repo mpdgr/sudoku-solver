@@ -20,8 +20,7 @@ public class BoardChecker {
         allLists.addAll(getRows(matrix));
         allLists.addAll(getSqrs(matrix));
 
-        //Each list is checked for repeats and empty spaces,
-        //results added to results list
+        //Each list is checked for repeats and empty spaces, results are added to results list
         List<Integer> checkListResults = new ArrayList<>();
 
         for (List<Integer> list : allLists) {
@@ -82,7 +81,6 @@ public class BoardChecker {
 
     //list checked for repeats and empty spaces
     public int checkList (List<Integer> list){
-
         list.sort((Integer a, Integer b) -> {return Integer.valueOf(a) - Integer.valueOf(b);});
 
         for (int i = 0; i < 8; i++){

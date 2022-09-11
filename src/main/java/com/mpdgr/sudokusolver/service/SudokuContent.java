@@ -3,9 +3,12 @@ package com.mpdgr.sudokusolver.service;
 import lombok.Getter;
 import lombok.Setter;
 
+/* parent for classes containing sudoku values as strings for html input/output templates */
+
 @Getter
 @Setter
-public abstract class SudokuStrings {
+public abstract class SudokuContent {
+
     private String v11;
     private String v21;
     private String v31;

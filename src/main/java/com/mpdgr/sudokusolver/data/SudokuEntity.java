@@ -1,6 +1,6 @@
 package com.mpdgr.sudokusolver.data;
 
-import com.mpdgr.sudokusolver.service.SudokuStrings;
+import com.mpdgr.sudokusolver.service.SudokuContent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class SudokuEntity extends SudokuStrings {
+public class SudokuEntity extends SudokuContent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

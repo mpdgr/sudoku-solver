@@ -1,6 +1,6 @@
 package com.mpdgr.sudokusolver.controller;
 
-import com.mpdgr.sudokusolver.controller.Config.LogConfig;
+import com.mpdgr.sudokusolver.controller.Log.LogConfig;
 import com.mpdgr.sudokusolver.controller.Mapper.EntityMapper;
 import com.mpdgr.sudokusolver.controller.Mapper.InputMapper;
 import com.mpdgr.sudokusolver.controller.Mapper.OutputMapper;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Random;

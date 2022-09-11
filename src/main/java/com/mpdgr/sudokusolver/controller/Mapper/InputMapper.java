@@ -1,13 +1,13 @@
 package com.mpdgr.sudokusolver.controller.Mapper;
 
 import com.mpdgr.sudokusolver.controller.InvalidInputException;
-import com.mpdgr.sudokusolver.service.SudokuStrings;
+import com.mpdgr.sudokusolver.service.SudokuContent;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InputMapper {
 
-    public <T extends SudokuStrings> Integer[][] inputToMatrix(T model) throws InvalidInputException {
+    public <T extends SudokuContent> Integer[][] inputToMatrix(T model) throws InvalidInputException {
 
         Integer[][] sudoku = new Integer[9][9];
 

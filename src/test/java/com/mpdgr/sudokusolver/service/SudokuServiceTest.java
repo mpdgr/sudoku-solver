@@ -5,13 +5,10 @@ import com.mpdgr.sudokusolver.controller.Mapper.InputMapper;
 import com.mpdgr.sudokusolver.data.SudokuEntity;
 import com.mpdgr.sudokusolver.data.SudokuRepository;
 import org.junit.jupiter.api.Assertions;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-
 import java.util.List;
 import java.util.stream.Collectors;
 

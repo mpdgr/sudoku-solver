@@ -10,7 +10,7 @@ public class Solution {
     private long operationTime;
     private int iterationCount;
     private int winnerThreadNr;
-    private ReverseMode winnerMode;
+    private TransposeMode winnerMode;
     private boolean solvable = true;
     private boolean done = false;
 
